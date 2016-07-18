@@ -1,4 +1,4 @@
-package com.example.administrator.myapplication;
+﻿package com.example.administrator.myapplication;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
             SystemBarTintManager tintManager = new SystemBarTintManager(this);
             tintManager.setStatusBarTintEnabled(true);
             tintManager.setStatusBarTintResource(R.color.titlec);// 通知栏颜色
+        }
+ViewGroup mContentView = (ViewGroup) findViewById(Window.ID_ANDROID_CONTENT);
+        View mChildView = mContentView.getChildAt(0);
+        if (mChildView != null) {
+            //注意不是设置 ContentView 的 FitsSystemWindows, 而是设置 ContentView 的第一个子 View . 使其不为系统 View 预留空间.
+        //设置为true表示为状态栏预留空间。    
+	ViewCompat.setFitsSystemWindows(mChildView, true);
         }
     }
 
